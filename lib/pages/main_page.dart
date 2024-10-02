@@ -34,6 +34,7 @@ class MainPage extends StatelessWidget {
                   child: Column(
                     children: [
                       Card(
+                        color: const Color(0xff1B1D1F),
                         elevation: 8,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -49,7 +50,7 @@ class MainPage extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 26,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    color: Color(0xffFEF7EE),
                                   ),
                                 ),
                               ),
@@ -58,7 +59,7 @@ class MainPage extends StatelessWidget {
                                 "Introducing our Coffee Collection, a selection of unique coffees from different roast types and origins, expertly roasted in small batches and shipped fresh weekly.",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.black54,
+                                  color: Color(0xff6F757C),
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -69,9 +70,13 @@ class MainPage extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {},
-                                    child: const Text('All Products'),
+                                    child: const Text('All Products', 
+                                    style: TextStyle(
+                                      color: Color(0xffFEF7EE),
+                                    ),
+                                    ),
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.grey[400],
+                                      backgroundColor: const Color(0xff6e757b),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
@@ -80,9 +85,13 @@ class MainPage extends StatelessWidget {
                                   const SizedBox(width: 10),
                                   ElevatedButton(
                                     onPressed: () {},
-                                    child: const Text('Available Now'),
+                                    child: const Text('Available Now',
+                                    style: TextStyle(
+                                      color: Color(0xffFEF7EE)
+                                    ),
+                                    ),
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.grey[700],
+                                      backgroundColor: const Color(0xff1B1D1F),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
@@ -91,10 +100,11 @@ class MainPage extends StatelessWidget {
                                 ],
                               ),
                             ],
+                            
                           ),
+                          
                         ),
                       ),
-                      const SizedBox(height: 20),
 
                       // Lista de productos sin altura fija
                       ListView.builder(
@@ -144,7 +154,7 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
       child: Card(
-        elevation: 5,
+        elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
