@@ -100,7 +100,6 @@ class MainPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 20),
                               // Product list
                               ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -151,12 +150,11 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 8.0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.85, // Width card
         child: Card(
-          color: Color(0xff1B1D1F), // Fondo negro
-          elevation: 3,
+          color: const Color(0xff1B1D1F), // Fondo negro
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,7 +184,7 @@ class ProductCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 3),
                     Row(
                       children: [
                         const Icon(Icons.star, color: Colors.amber, size: 20),
