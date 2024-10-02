@@ -45,11 +45,13 @@ class MainPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const SizedBox(height: 60),
+
                               const Center(
                                 child: Text(
                                   "Our Collection",
                                   style: TextStyle(
-                                    fontSize: 26,
+                                    fontSize: 30,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xffFEF7EE),
                                   ),
@@ -75,12 +77,13 @@ class MainPage extends StatelessWidget {
                                       'All Products',
                                       style: TextStyle(
                                         color: Color(0xffFEF7EE),
+                                        fontSize: 15,
                                       ),
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xff6e757b),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
                                   ),
@@ -89,12 +92,16 @@ class MainPage extends StatelessWidget {
                                     onPressed: () {},
                                     child: const Text(
                                       'Available Now',
-                                      style: TextStyle(color: Color(0xffFEF7EE)),
+                                      style: TextStyle(
+                                        color: Color(0xffFEF7EE),
+                                        fontSize: 15,
+                                        ),
+                                        
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xff1B1D1F),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
                                   ),
@@ -152,7 +159,7 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.85, // Width card
+        width: MediaQuery.of(context).size.width * 0.95, // Width card
         child: Card(
           color: const Color(0xff1B1D1F), // Fondo negro
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -161,18 +168,19 @@ class ProductCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
                 child: Image.asset(
                   imagePath,
-                  height: 150,
+                  height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
