@@ -6,10 +6,10 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Imagen de fondo
             Stack(
               children: [
                 LayoutBuilder(
@@ -28,12 +28,13 @@ class MainPage extends StatelessWidget {
                     );
                   },
                 ),
-                // Tarjeta principal sobre la imagen, ahora utilizando Padding
+                // Products in Card
                 Padding(
-                  padding: const EdgeInsets.only(top: 180.0), // Ajuste para que baje un poco
-                  child: Column(
-                    children: [
-                      Card(
+                  padding: const EdgeInsets.only(top: 130.0),
+                  child: Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.85, // Card width
+                      child: Card(
                         color: const Color(0xff1B1D1F),
                         elevation: 8,
                         shape: RoundedRectangleBorder(
@@ -64,16 +65,17 @@ class MainPage extends StatelessWidget {
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 20),
-                              // Botones All Products y Available Now
+                              // All Products y Available Now
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {},
-                                    child: const Text('All Products', 
-                                    style: TextStyle(
-                                      color: Color(0xffFEF7EE),
-                                    ),
+                                    child: const Text(
+                                      'All Products',
+                                      style: TextStyle(
+                                        color: Color(0xffFEF7EE),
+                                      ),
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xff6e757b),
@@ -85,10 +87,9 @@ class MainPage extends StatelessWidget {
                                   const SizedBox(width: 10),
                                   ElevatedButton(
                                     onPressed: () {},
-                                    child: const Text('Available Now',
-                                    style: TextStyle(
-                                      color: Color(0xffFEF7EE)
-                                    ),
+                                    child: const Text(
+                                      'Available Now',
+                                      style: TextStyle(color: Color(0xffFEF7EE)),
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xff1B1D1F),
@@ -99,29 +100,27 @@ class MainPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                              const SizedBox(height: 20),
+                              // Product list
+                              ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: 5, 
+                                itemBuilder: (context, index) {
+                                  return const ProductCard(
+                                    imagePath: 'assets/images/cappu.jpeg',
+                                    title: 'Cappuccino',
+                                    price: '5.20',
+                                    rating: 4.7,
+                                    votes: 65,
+                                  );
+                                },
+                              ),
                             ],
-                            
                           ),
-                          
                         ),
                       ),
-
-                      // Lista de productos sin altura fija
-                      ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true, // Permite que se ajuste según el contenido
-                        itemCount: 5, // Cambia este número para agregar más productos
-                        itemBuilder: (context, index) {
-                          return const ProductCard(
-                            imagePath: 'assets/images/cappu.jpeg',
-                            title: 'Cappuccino',
-                            price: '5.20',
-                            rating: 4.7,
-                            votes: 65,
-                          );
-                        },
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -153,60 +152,65 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.85, // Width card
+        child: Card(
+          color: Color(0xff1B1D1F), // Fondo negro
+          elevation: 3,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+                child: Image.asset(
+                  imagePath,
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: Image.asset(
-                imagePath,
-                height: 150,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      const Icon(Icons.star, color: Colors.amber, size: 20),
-                      const SizedBox(width: 5),
-                      Text(
-                        "$rating ($votes votes)",
-                        style: const TextStyle(fontSize: 14),
-                      ),
-                      const Spacer(),
-                      Text(
-                        "\$$price",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[700],
+                    const SizedBox(height: 5),
+                    Row(
+                      children: [
+                        const Icon(Icons.star, color: Colors.amber, size: 20),
+                        const SizedBox(width: 5),
+                        Text(
+                          "$rating ($votes votes)",
+                          style: const TextStyle(fontSize: 14, color: Colors.white),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        const Spacer(),
+                        Text(
+                          "\$$price",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[700],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
